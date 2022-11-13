@@ -3,7 +3,8 @@ const {
     getAllThought,
     addThought, 
     removeThought,
-    deleteThought
+    deleteThought,
+    updateThought
 } = require('../../controllers/thought-controller');
 
 // set up GET all at /api/Thoughts
@@ -13,10 +14,11 @@ router
 
 router
     .route('/:id')
-    .delete(deleteThought);
+    .delete(deleteThought)
+    .put(updateThought);
 
 // /api/thoughts/<userId>
-router
+router 
     .route('/:userId')
     .post(addThought);
 
