@@ -1,4 +1,27 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
+
+const FriendSchema = new Schema({
+   friendId: {
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId()
+    },
+  
+    friendName: {
+      type: String
+    },
+
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: createdAtVal => dateFormat(createdAtVal)
+    }
+}, 
+{
+  toJSON: {
+    getters: true
+  }
+});
 
 const UserSchema = new Schema(
    {
@@ -14,7 +37,7 @@ const UserSchema = new Schema(
     unique: 'This email address already exist!'
    }, 
 
-   friends: [],
+   friends: [FriendSchema],
 
    thoughts: [
       {
