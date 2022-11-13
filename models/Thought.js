@@ -3,10 +3,12 @@ const dateFormat = require('../utils/dateFormat');
 
 const ThoughtSchema = new Schema({
   username: {
-    type: String
+    type: String,
+    required: true
   },
   thoughtText: {
-    type: String
+    type: String,
+    required: true
   },
   createdAt: {
     type: Date,
