@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { 
     getAllThought,
+    getThoughtById,
     addThought, 
     removeThought,
     deleteThought,
@@ -16,6 +17,7 @@ router
 
 router
     .route('/:id')
+    .get(getThoughtById)
     .delete(deleteThought)
     .put(updateThought);
 
