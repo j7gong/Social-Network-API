@@ -1,7 +1,8 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const FriendSchema = new Schema({
+   // set custom id to avoid confusion with parent user_id
    friendId: {
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId()
@@ -33,8 +34,7 @@ const UserSchema = new Schema(
     type: String,
     trim: true,
     required: 'Email address is required', 
-    match: /.+\@.+\..+/,
-    unique: 'This email address already exist!'
+    match: /.+\@.+\..+/
    }, 
 
    friends: [FriendSchema],
